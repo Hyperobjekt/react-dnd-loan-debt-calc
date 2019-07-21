@@ -291,9 +291,10 @@ class DndLoanDebt extends Component {
   }
 
   setDeviceWidth = () => {
+    // console.log('setDeviceWidth');
     const deviceWidth = Math.max(window.screen.width, window.innerWidth);
-    console.log('deviceWidth:');
-    console.log(deviceWidth);
+    // console.log('deviceWidth:');
+    // console.log(deviceWidth);
     const _user = this.state.user;
     _user.deviceWidth = deviceWidth;
     this.setState({
@@ -559,11 +560,9 @@ class DndLoanDebt extends Component {
   }
 
   onSubmit = (e) => {
-    // if (e.keyCode === 13) {
-      console.log('hit enter');
-      e.preventDefault();
-      return false;
-    // }
+    // console.log('onSubmit');
+    e.preventDefault();
+    return false;
   };
 
   handleInputChange(event) {
