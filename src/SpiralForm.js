@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onKeyUp, onFocus, onBlur, myBalanceRef, userLoan, strings, inputs, ...props }) => {
+const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onBlur, myBalanceRef, userLoan, strings, inputs, ...props }) => {
   // Set up classes for validation feedback.
   const amtGroupClass = classNames('form-group amtGroupClass',
     {
@@ -39,7 +39,6 @@ const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onKeyUp, o
             className="curr"
             maxLength="7"
             aria-label={'Enter ' + strings.fields.loanBalance}
-            onKeyUp={(e) => onKeyUp(e)}
             onFocus={(e) => onFocus(e)}
             onBlur={(e) => onBlur(e)}
             onInput={(e) => handleInputChange(e)}

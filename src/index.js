@@ -543,14 +543,6 @@ class DndLoanDebt extends Component {
     }
   }
 
-  onKeyUp = (e) => {
-    if (e.keyCode === 13) {
-      console.log('hit enter');
-      e.preventDefault();
-      return false;
-    }
-  };
-
   onSubmit = (e) => {
     // if (e.keyCode === 13) {
       console.log('hit enter');
@@ -669,7 +661,6 @@ class DndLoanDebt extends Component {
               onSubmit={this.onSubmit}
               getCurrencyFormat={this.getCurrencyFormat}
               handleInputChange={this.handleInputChange}
-              onKeyUp={this.onKeyUp}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               myBalanceRef={this.myBalanceRef}
