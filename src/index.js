@@ -543,6 +543,22 @@ class DndLoanDebt extends Component {
     }
   }
 
+  onKeyUp = (e) => {
+    if (e.keyCode === 13) {
+      console.log('hit enter');
+      e.preventDefault();
+      return false;
+    }
+  };
+
+  onSubmit = (e) => {
+    // if (e.keyCode === 13) {
+      console.log('hit enter');
+      e.preventDefault();
+      return false;
+    // }
+  };
+
   handleInputChange(event) {
     // console.log('handleInputChange');
     const target = event.target;
@@ -565,7 +581,7 @@ class DndLoanDebt extends Component {
       this.setState({
         timer: setTimeout(() => {
           this.onInputUpdateUserState(target.name, Number(target.value))
-        }, 1000)
+        }, 500)
       });
     } else {
       // console.log('not valid');
@@ -650,8 +666,10 @@ class DndLoanDebt extends Component {
               strings={this.state.strings}
             />
             <SpiralForm
+              onSubmit={this.onSubmit}
               getCurrencyFormat={this.getCurrencyFormat}
               handleInputChange={this.handleInputChange}
+              onKeyUp={this.onKeyUp}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               myBalanceRef={this.myBalanceRef}
@@ -683,6 +701,7 @@ class DndLoanDebt extends Component {
           </div>
         </div>
         <LoanForm
+          onSubmit={this.onSubmit}
           getCurrencyFormat={this.getCurrencyFormat}
           handleInputChange={this.handleInputChange}
           onFocus={this.onFocus}

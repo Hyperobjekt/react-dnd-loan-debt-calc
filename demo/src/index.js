@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 import '../../src/styles/scss/App.scss';
-import DndLoanDebt from '../../src/index';
+import DndLoanDebt from '../../src/index.js';
 
 const props = {
   overallavg: "30460",

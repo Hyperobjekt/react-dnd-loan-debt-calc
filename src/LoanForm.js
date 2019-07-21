@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const LoanForm = ({ getCurrencyFormat, handleInputChange, onFocus, onBlur, userLoan, strings, inputs, ...props }) => {
+const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onBlur, userLoan, strings, inputs, ...props }) => {
   // Set up classes for validation feedback.
   const amtGroupClass = classNames('form-group amtGroupClass',
     {
@@ -77,7 +77,7 @@ const LoanForm = ({ getCurrencyFormat, handleInputChange, onFocus, onBlur, userL
   return (
     <div className="row timeline-form">
       <div className="offset-2 col-8 offset-sm-3 col-sm-6 col-md-4 offset-md-1">
-        <form noValidate>
+        <form noValidate onSubmit={(e) => onSubmit(e)}>
           {/* Begin principal input */}
           <div className={amtGroupClass}>
             <label>{strings.fields.loanBalance}</label>
