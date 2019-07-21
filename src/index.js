@@ -633,13 +633,13 @@ class DndLoanDebt extends Component {
   }
 
   onClick = (e) => {
-    console.log('onClick');
-    let isMSEdge = window.navigator.userAgent.toLowerCase().indexOf('edge') > -1;
+    // console.log('onClick');
+    const isMSEdge = window.navigator.userAgent.toLowerCase().indexOf('edge') > -1;
     if (isMSEdge) {
-      console.log('is edge');
+      // console.log('is edge');
       this.onFocus(e);
     } else {
-      console.log('not edge');
+      // console.log('not edge');
     }
   }
 
@@ -721,6 +721,7 @@ class DndLoanDebt extends Component {
           onSubmit={this.onSubmit}
           getCurrencyFormat={this.getCurrencyFormat}
           handleInputChange={this.handleInputChange}
+          onClick={this.onClick}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           userLoan={this.state.loans.user}

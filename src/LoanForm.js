@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onBlur, userLoan, strings, inputs, ...props }) => {
+const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, onFocus, onBlur, userLoan, strings, inputs, ...props }) => {
   // Set up classes for validation feedback.
   const amtGroupClass = classNames('form-group amtGroupClass',
     {
@@ -90,6 +90,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
                 autoComplete="off"
                 className="loanTotalCurr2"
                 maxLength="7"
+                onClick={(e) => onClick(e)}
                 onFocus={(e) => onFocus(e)}
                 onBlur={(e) => onBlur(e)}
                 aria-label={'Enter ' + strings.fields.loanBalance}
@@ -122,6 +123,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
                 maxLength="6"
                 autoComplete="off"
                 className="loanRateCurr"
+                onClick={(e) => onClick(e)}
                 onFocus={(e) => onFocus(e)}
                 onBlur={(e) => onBlur(e)}
                 aria-label={'Enter ' + strings.fields.origInt}
@@ -147,6 +149,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
                 maxLength="5"
                 autoComplete="off"
                 className="loanPmtCurr"
+                onClick={(e) => onClick(e)}
                 onFocus={(e) => onFocus(e)}
                 onBlur={(e) => onBlur(e)}
                 aria-label={'Enter ' + strings.fields.origPmt}
@@ -175,6 +178,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
                 type="number"
                 maxLength="6"
                 autoComplete="off"
+                onClick={(e) => onClick(e)}
                 onFocus={(e) => onFocus(e)}
                 onBlur={(e) => onBlur(e)}
                 aria-label={'Enter ' + strings.fields.newInt}
@@ -199,6 +203,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
                 className="loanPmtNew"
                 maxLength="5"
                 autoComplete="off"
+                onClick={(e) => onClick(e)}
                 onFocus={(e) => onFocus(e)}
                 onBlur={(e) => onBlur(e)}
                 aria-label={'Enter ' + strings.fields.newPmt}
