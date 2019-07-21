@@ -717,7 +717,7 @@ class DndLoanDebt extends Component {
           </div>
         </div>
         <div className="row payoff-amount payoff">
-          <div className="offset-1 col-10 col-md-9">
+          <div className="offset-0 col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-9">
             <PayoffSchedule
               offsets={this.state.offsets}
               paths={this.state.paths}
@@ -726,7 +726,7 @@ class DndLoanDebt extends Component {
           </div>
         </div>
         <div className="row payoff-timeline payoff">
-          <div className="offset-1 col-10 col-md-9">
+          <div className="offset-0 col-10 offset-sm-1 col-sm-10 offset-md-1 col-md-9">
             <PayoffAmt
               getCurrencyFormat={this.getCurrencyFormat}
               principal={this.state.loans.user}

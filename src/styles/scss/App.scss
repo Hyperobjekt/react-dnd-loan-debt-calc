@@ -34,6 +34,7 @@ $interest-new: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAIAAA
 $input-gray: #D2D2D2;
 
 #DndLoanDebt {
+  overflow: hidden;
 
   // Basic font styling
   .row {

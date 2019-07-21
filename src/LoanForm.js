@@ -76,7 +76,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
 
   return (
     <div className="row timeline-form">
-      <div className="offset-2 col-8 offset-sm-3 col-sm-6 col-md-4 offset-md-1">
+      <div className="offset-2 col-8 col-md-4 offset-md-1">
         <form noValidate onSubmit={(e) => onSubmit(e)}>
           {/* Begin principal input */}
           <div className={amtGroupClass}>
@@ -106,10 +106,10 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
           {/* End principal input */}
         </form>
       </div>
-      <div className="offset-2 col-8 offset-sm-3 col-sm-6 col-md-4 offset-md-1">
+      <div className="offset-2 col-8 col-md-4 offset-md-1">
         {/* Placeholder */}
       </div>
-      <div className="offset-2 col-8 offset-sm-3 col-sm-6 col-md-4 offset-md-1 orig-loan-details">
+      <div className="offset-2 col-8 col-md-4 offset-md-1 orig-loan-details">
         <form>
           {/* Begin current interest input */}
           <div className={rateGroupClass}>
@@ -163,7 +163,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onFocus, onB
           </div>
         </form>
       </div>
-      <div className="offset-2 col-8 offset-sm-3 col-sm-6 col-md-4 offset-md-1 orig-loan-details">
+      <div className="offset-2 col-8 col-md-4 offset-md-1 orig-loan-details">
         <form>
           <div className={newRateGroupClass}>
             <label>{strings.fields.newInt}</label>
