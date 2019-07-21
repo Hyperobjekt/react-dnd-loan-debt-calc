@@ -4,7 +4,7 @@
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
-Describe react-dnd-loan-debt-calc here.
+React loan debt comparator and calculator for the (Dignity and Debt Project)[https://www.dignityanddebt.org/],
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
@@ -14,4 +14,3 @@ Describe react-dnd-loan-debt-calc here.
 
 [coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/user/repo
-# react-dnd-loan-debt-calc
