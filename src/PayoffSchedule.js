@@ -24,10 +24,6 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
     user.payoffDateNew :
     '';
 
-  // const svgClasses = classNames('svg-bars',
-  //   { 'unset': (!offsets.paid.original && !offsets.paid.new) }
-  // );
-
   const echartPayoffDateCurr =
     user.nperCurr ?
     user.nperCurr :
@@ -40,8 +36,8 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
   const options = {
     id: "payoffSchedule",
     title: {
-      show: (user.deviceWidth <= 360) ? true : false,
-      text: "CURRENT AND NEW PAYOFF SCHEDULE",
+      show: (user.deviceWidth <= 460) ? true : false,
+      text: "OLD AND NEW TIMELINE",
       textStyle: {
         fontFamily: 'Vasarely',
         fontSize: 16,
@@ -52,7 +48,7 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
     tooltip : {
         trigger: 'axis',
         confine: false,
-        show: (user.deviceWidth >= 361) ? true : false,
+        show: (user.deviceWidth >= 461) ? true : false,
         axisPointer: {
           type : 'none'
         },
@@ -82,9 +78,9 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
     },
     grid: {
       left: 0,
-      top: (user.deviceWidth >= 361) ? 20 : 40,
+      top: (user.deviceWidth >= 461) ? 20 : 40,
       width: '100%',
-      height: (user.deviceWidth >= 361) ? 70 : 120,
+      height: (user.deviceWidth >= 461) ? 70 : 120,
       containLabel: true
     },
     xAxis:  {
@@ -102,7 +98,7 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
         show: false
       },
       axisLabel: {
-        show: (user.deviceWidth >= 361) ? true : false,
+        show: (user.deviceWidth >= 461) ? true : false,
         fontFamily: 'Vasarely',
         fontSize: 18,
         verticalAlign: 'middle',
@@ -181,7 +177,7 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
   };
 
   // opts={{renderer: 'svg'}}
-  const height = (user.deviceWidth >= 361) ? '100px' : '140px';
+  const height = (user.deviceWidth >= 461) ? '100px' : '140px';
   return (
     <div className="payoff-sched-parent">
       <ReactEcharts

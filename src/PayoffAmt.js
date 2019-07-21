@@ -29,8 +29,8 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     show: false,
     animation: true,
     title: {
-      show: (user.deviceWidth <= 360) ? true : false,
-      text: "CURRENT AND NEW TOTALS PAID",
+      show: (user.deviceWidth <= 460) ? true : false,
+      text: "OLD AND NEW TOTALS",
       textStyle: {
         fontFamily: 'Vasarely',
         fontSize: 16,
@@ -40,7 +40,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     },
     tooltip : {
         trigger: 'axis',
-        show: (user.deviceWidth >= 361) ? true : false,
+        show: (user.deviceWidth >= 461) ? true : false,
         axisPointer : {
           type : 'none'
         },
@@ -81,9 +81,9 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     },
     grid: {
       left: 0,
-      top: (user.deviceWidth >= 361) ? 20 : 40,
+      top: (user.deviceWidth >= 461) ? 20 : 40,
       width: '100%',
-      height: (user.deviceWidth >= 361) ? 70 : 120,
+      height: (user.deviceWidth >= 461) ? 70 : 120,
       containLabel: true
     },
     xAxis:  {
@@ -93,7 +93,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     yAxis: {
         type: 'category',
         data: ['NEW TOTAL PAID', 'OLD TOTAL PAID'],
-        show: (user.deviceWidth >= 361) ? true : false,
+        show: (user.deviceWidth >= 461) ? true : false,
         axisLine: {
           show: false
         },
@@ -102,7 +102,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
           alignWithLabel: true,
         },
         axisLabel: {
-          show: (user.deviceWidth >= 361) ? true : false,
+          show: (user.deviceWidth >= 461) ? true : false,
           fontFamily: 'Vasarely',
           fontSize: 18,
           verticalAlign: 'middle',
@@ -243,8 +243,8 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     ]
   };
 
-// opts={{renderer: 'svg'}}
-  const height = (user.deviceWidth >= 361) ? '100px' : '140px';
+  // opts={{renderer: 'svg'}}
+  const height = (user.deviceWidth >= 461) ? '100px' : '140px';
   return (
     <div className="payoff-amt-parent">
       <ReactEcharts
