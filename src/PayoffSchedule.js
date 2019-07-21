@@ -39,11 +39,22 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
 
   const options = {
     id: "payoffSchedule",
+    title: {
+      show: (user.deviceWidth <= 360) ? true : false,
+      text: "CURRENT AND NEW PAYOFF SCHEDULE",
+      textStyle: {
+        fontFamily: 'Vasarely',
+        fontSize: 16,
+        color: '#000',
+      },
+      top: 0,
+    },
     tooltip : {
         trigger: 'axis',
         confine: false,
-        axisPointer : {
-            type : 'none'
+        show: (user.deviceWidth >= 361) ? true : false,
+        axisPointer: {
+          type : 'none'
         },
         padding: [6, 10],
         formatter: (params) => {
@@ -60,7 +71,6 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
           fontFamily: 'Vasarely',
           fontSize: 16,
           color: '#000',
-
         },
         backgroundColor: '#FFEBAE',
         borderColor: '#000',
@@ -72,9 +82,9 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
     },
     grid: {
       left: 0,
-      top: 20,
+      top: (user.deviceWidth >= 361) ? 20 : 40,
       width: '100%',
-      height: 70,
+      height: (user.deviceWidth >= 361) ? 70 : 120,
       containLabel: true
     },
     xAxis:  {
@@ -92,6 +102,7 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
         show: false
       },
       axisLabel: {
+        show: (user.deviceWidth >= 361) ? true : false,
         fontFamily: 'Vasarely',
         fontSize: 18,
         verticalAlign: 'middle',
@@ -170,12 +181,12 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
   };
 
   // opts={{renderer: 'svg'}}
-
+  const height = (user.deviceWidth >= 361) ? '100px' : '140px';
   return (
     <div className="payoff-sched-parent">
       <ReactEcharts
         option={options}
-        style={{height: '100px', width: '100%'}}
+        style={{height: height, width: '100%'}}
       />
     </div>
   );

@@ -28,8 +28,19 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     id: 'payoffAmt',
     show: false,
     animation: true,
+    title: {
+      show: (user.deviceWidth <= 360) ? true : false,
+      text: "CURRENT AND NEW TOTALS PAID",
+      textStyle: {
+        fontFamily: 'Vasarely',
+        fontSize: 16,
+        color: '#000',
+      },
+      top: 0,
+    },
     tooltip : {
         trigger: 'axis',
+        show: (user.deviceWidth >= 361) ? true : false,
         axisPointer : {
           type : 'none'
         },
@@ -70,9 +81,9 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     },
     grid: {
       left: 0,
-      top: 20,
+      top: (user.deviceWidth >= 361) ? 20 : 40,
       width: '100%',
-      height: 70,
+      height: (user.deviceWidth >= 361) ? 70 : 120,
       containLabel: true
     },
     xAxis:  {
@@ -82,7 +93,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     yAxis: {
         type: 'category',
         data: ['NEW TOTAL PAID', 'OLD TOTAL PAID'],
-        show: true,
+        show: (user.deviceWidth >= 361) ? true : false,
         axisLine: {
           show: false
         },
@@ -91,6 +102,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
           alignWithLabel: true,
         },
         axisLabel: {
+          show: (user.deviceWidth >= 361) ? true : false,
           fontFamily: 'Vasarely',
           fontSize: 18,
           verticalAlign: 'middle',
@@ -232,12 +244,12 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
   };
 
 // opts={{renderer: 'svg'}}
-
+  const height = (user.deviceWidth >= 361) ? '100px' : '140px';
   return (
     <div className="payoff-amt-parent">
       <ReactEcharts
         option={options}
-        style={{height: '100px', width: '100%'}}
+        style={{height: height, width: '100%'}}
       />
     </div>
   );

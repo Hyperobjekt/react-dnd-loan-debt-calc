@@ -130,7 +130,8 @@ class DndLoanDebt extends Component {
         totalIntNew: null,
         totalIntCurr: null,
         nperCurr: null,
-        nperNew: null
+        nperNew: null,
+        deviceWidth: null
       },
       validation: {
         loanTotalCurr: {
@@ -284,6 +285,20 @@ class DndLoanDebt extends Component {
         svgClasses: "",
       }));
     }, 1000);
+
+    window.addEventListener("resize", this.setDeviceWidth);
+    this.setDeviceWidth();
+  }
+
+  setDeviceWidth = () => {
+    const deviceWidth = Math.max(window.screen.width, window.innerWidth);
+    console.log('deviceWidth:');
+    console.log(deviceWidth);
+    const _user = this.state.user;
+    _user.deviceWidth = deviceWidth;
+    this.setState({
+      user: _user
+    });
   }
 
   onUpdateOffsets = (s) => {
@@ -717,7 +732,7 @@ class DndLoanDebt extends Component {
           </div>
         </div>
         <div className="row payoff-amount payoff">
-          <div className="offset-0 col-12 offset-sm-1 col-sm-10 offset-md-1 col-md-9">
+          <div className="offset-1 col-10 offset-md-1 col-md-9">
             <PayoffSchedule
               offsets={this.state.offsets}
               paths={this.state.paths}
@@ -726,7 +741,7 @@ class DndLoanDebt extends Component {
           </div>
         </div>
         <div className="row payoff-timeline payoff">
-          <div className="offset-0 col-10 offset-sm-1 col-sm-10 offset-md-1 col-md-9">
+          <div className="offset-1 col-10 offset-md-1 col-md-9">
             <PayoffAmt
               getCurrencyFormat={this.getCurrencyFormat}
               principal={this.state.loans.user}
