@@ -15,22 +15,22 @@ const Spiral = ({ ...props }) => {
             <desc>Spiral-shaped visualization of loan debt by demographic. Shows overall averge loan debt for Bachelor's degree completers, as well as post-Bachelor's loan debt for black, white, asian, and hispanic graduates. These amounts are compared to the user's loan debt.</desc>
             <defs>
               <pattern id="overallStroke" patternUnits="userSpaceOnUse" width="100" height="100" x="0" y="0">
-                <image href={textureOverall} x="0" y="0" width="100" height="100" />
+                <image xlinkHref={textureOverall} x="0" y="0" width="100" height="100" />
               </pattern>
               <pattern id="blackStroke" patternUnits="userSpaceOnUse" width="20" height="20" x="0" y="0">
-                <image href={textureBlack} x="0" y="0" width="20" height="20" />
+                <image xlinkHref={textureBlack} x="0" y="0" width="20" height="20" />
               </pattern>
               <pattern id="whiteStroke" patternUnits="userSpaceOnUse" width="20" height="20" x="0" y="0">
-                <image href={textureWhite} x="0" y="0" width="20" height="20" />
+                <image xlinkHref={textureWhite} x="0" y="0" width="20" height="20" />
               </pattern>
               <pattern id="asianStroke" patternUnits="userSpaceOnUse" width="20" height="20" x="0" y="0">
-                <image href={textureAsian} x="0" y="0" width="20" height="20" />
+                <image xlinkHref={textureAsian} x="0" y="0" width="20" height="20" />
               </pattern>
               <pattern id="hispanicStroke" patternUnits="userSpaceOnUse" width="20" height="20" x="0" y="0">
-                <image href={textureHispanic} x="0" y="0" width="20" height="20" />
+                <image xlinkHref={textureHispanic} x="0" y="0" width="20" height="20" />
               </pattern>
               <pattern id="userStroke" patternUnits="userSpaceOnUse" width="20" height="20" x="0" y="0">
-                <image href={textureUser} x="0" y="0" width="20" height="20" />
+                <image xlinkHref={textureUser} x="0" y="0" width="20" height="20" />
               </pattern>
             </defs>
 
