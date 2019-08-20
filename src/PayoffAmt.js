@@ -30,7 +30,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     animation: true,
     title: {
       show: (user.deviceWidth <= 460) ? true : false,
-      text: "OLD AND NEW TOTALS",
+      text: "CURRENT AND NEW TOTAL PAYMENTS",
       textStyle: {
         fontFamily: 'Vasarely',
         fontSize: 16,
@@ -77,7 +77,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
         extraCssText: 'border-radius:0;'
     },
     legend: {
-        data: ['OLD TOTAL PAID', 'NEW TOTAL PAID']
+        data: ['CURRENT TOTAL PAYMENTS', 'NEW TOTAL PAYMENTS']
     },
     grid: {
       left: 0,
@@ -92,7 +92,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
     },
     yAxis: {
         type: 'category',
-        data: ['NEW TOTAL PAID', 'OLD TOTAL PAID'],
+        data: ['NEW TOTAL PAYMENTS', 'CURRENT TOTAL PAYMENTS'],
         show: (user.deviceWidth >= 461) ? true : false,
         axisLine: {
           show: false
@@ -106,7 +106,7 @@ const PayoffAmt = ({ getCurrencyFormat, principal, offsets, paths, user, colors}
           fontFamily: 'Vasarely',
           fontSize: 18,
           verticalAlign: 'middle',
-          padding: [0, 0, 5, 23],
+          padding: [0, 0, 5, 0],
         }
     },
     barWidth: 10,
