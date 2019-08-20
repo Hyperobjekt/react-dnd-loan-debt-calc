@@ -3,16 +3,21 @@ import classNames from 'classnames';
 
 const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, onFocus, onBlur, myBalanceRef, userLoan, strings, inputs, ...props }) => {
   // Set up classes for validation feedback.
-  const amtGroupClass = classNames('form-group amtGroupClass',
+  const amtGroupClass = classNames('form-group',
     {
       'has-error': !props.loanTotalCurr.isValid,
       'has-focus': inputs.loanTotalCurr.focused,
       'has-value': inputs.loanTotalCurr.hasValue,
-      'twin-has-value': inputs.loanTotalCurr2.hasValue
+      // 'twin-has-value': inputs.loanTotalCurr2.hasValue
     }
   );
 
   const currDisplay = userLoan ? getCurrencyFormat(userLoan, false) : strings.fields.loanBalance;
+
+  const loanTotalCurrPlaceholder =
+    inputs.loanTotalCurr.focused ?
+    '' :
+    strings.fields.loanBalance;
 
   const clearInput = (e) => {
     // console.log('clear input');
@@ -30,7 +35,6 @@ const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, o
       <div className={amtGroupClass}>
         <label>{strings.fields.loanBalance}</label>
         <span className="symbol-wrapper currency">
-          <span className="amount">{currDisplay}</span>
           <input
             type="number"
             id="loan_amt_curr"
@@ -43,6 +47,7 @@ const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, o
             onFocus={(e) => onFocus(e)}
             onBlur={(e) => onBlur(e)}
             onInput={(e) => handleInputChange(e)}
+            placeholder={loanTotalCurrPlaceholder}
           />
         </span>
         <i

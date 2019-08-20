@@ -3,12 +3,12 @@ import classNames from 'classnames';
 
 const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, onFocus, onBlur, userLoan, strings, inputs, ...props }) => {
   // Set up classes for validation feedback.
-  const amtGroupClass = classNames('form-group amtGroupClass',
+  const amtGroupClass = classNames('form-group',
     {
-      'has-error': !props.loanTotalCurr2.isValid,
-      'has-focus': inputs.loanTotalCurr2.focused,
-      'has-value': inputs.loanTotalCurr2.hasValue,
-      'twin-has-value': inputs.loanTotalCurr.hasValue
+      'has-error': !props.loanPrincipalCurr.isValid,
+      'has-focus': inputs.loanPrincipalCurr.focused,
+      'has-value': inputs.loanPrincipalCurr.hasValue,
+      // 'twin-has-value': inputs.loanTotalCurr.hasValue
     }
   );
   const rateGroupClass = classNames('form-group',
@@ -41,7 +41,12 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, onF
      }
   );
 
-  const currDisplay = userLoan ? getCurrencyFormat(userLoan, false) : strings.fields.loanBalance;
+  // const currDisplay = userLoan ? getCurrencyFormat(userLoan, false) : strings.fields.loanBalance;
+
+  const loanPrincipalCurrPlaceholder =
+    inputs.loanPrincipalCurr.focused ?
+    '' :
+    strings.fields.loanBalance;
 
   const loanRateCurrPlaceholder =
     inputs.loanRateCurr.focused ?
@@ -82,11 +87,10 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, onF
           <div className={amtGroupClass}>
             <label>{strings.fields.loanBalance}</label>
             <span className="symbol-wrapper currency">
-              <span className="amount">{currDisplay}</span>
               <input
                 type="number"
                 id="loan_amt_curr2"
-                name="loanTotalCurr2"
+                name="loanPrincipalCurr"
                 autoComplete="off"
                 className="loanTotalCurr2"
                 maxLength="7"
@@ -94,6 +98,7 @@ const LoanForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, onF
                 onFocus={(e) => onFocus(e)}
                 onBlur={(e) => onBlur(e)}
                 aria-label={'Enter ' + strings.fields.loanBalance}
+                placeholder={loanPrincipalCurrPlaceholder}
                 onInput={(e) => handleInputChange(e)}
                 />
             </span>

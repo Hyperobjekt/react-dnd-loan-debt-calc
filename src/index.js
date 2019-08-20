@@ -139,7 +139,7 @@ class DndLoanDebt extends Component {
           isValid: true,
           message: 'Please enter a number between 0 and 1,000,000.'
         },
-        loanTotalCurr2: {
+        loanPrincipalCurr: {
           value: 0,
           isValid: true,
           message: 'Please enter a number between 0 and 1,000,000.'
@@ -170,7 +170,7 @@ class DndLoanDebt extends Component {
           focused: false,
           hasValue: false
         },
-        loanTotalCurr2: {
+        loanPrincipalCurr: {
           focused: false,
           hasValue: false
         },
@@ -373,7 +373,7 @@ class DndLoanDebt extends Component {
   onUpdateLoanStats = (loans, user) => {
     // console.log('onUpdateLoanStats');
     // Gather all the data.
-    const _loanAmtCurr = loans.user;
+    // const _loanAmtCurr = loans.user;
     const _loanRateCurr =
       (user.loanRateCurr > 1) ?
       (user.loanRateCurr / 100) :
@@ -385,6 +385,7 @@ class DndLoanDebt extends Component {
       user.loanRateNew;
     const _loanPmtNew = user.loanPmtNew;
     const _user = user;
+    const _loanAmtCurr = _user.loanPrincipalCurr;
     // let _loanPrincipal = null;
     let _currNPER = null;
     let _newNPER = null;
@@ -396,7 +397,7 @@ class DndLoanDebt extends Component {
     // If loan amount, interest rate, and payments
     if ((_loanAmtCurr > 0) && (_loanRateCurr > 0) && (_loanPmtCurr > 0)) {
       // Set current principal value for bar
-      _user.loanPrincipalCurr = _loanAmtCurr;
+      // _user.loanPrincipalCurr = _loanAmtCurr;
 
       // Calculate number of payment periods
       // Arguments: (rate/12, payment, presentvalue)
@@ -421,7 +422,7 @@ class DndLoanDebt extends Component {
       }
     } else {
       // console.log('Not enough info to update current loan stats. Exiting.')
-      _user.loanPrincipalCurr = null;
+      // _user.loanPrincipalCurr = null;
       _user.nperCurr = null;
       _user.totalPaidCurr = null;
       _user.payoffDateCurr = null;
@@ -605,7 +606,8 @@ class DndLoanDebt extends Component {
   onInputUpdateUserState = (node, val) => {
     // console.log('onInputUpdateUserState()');
     // If updating current loan amt, separate thing.
-    if (node === 'loanTotalCurr' || node === 'loanTotalCurr2') {
+    // if (node === 'loanTotalCurr' || node === 'loanTotalCurr2') {
+    if (node === 'loanTotalCurr') {
       let _loans = this.state.loans;
       _loans.user = val;
       this.setState({
@@ -645,17 +647,18 @@ class DndLoanDebt extends Component {
 
   onFocus = (event) => {
     // console.log('onFocus');
-    // console.log(event);
+    // console.log(event.target);
     let _inputs = this.state.inputs;
     _inputs[event.target.name].focused = true;
     this.setState({
       inputs: _inputs,
     });
-    if (event.target.name === 'loanTotalCurr' || event.target.name === 'loanTotalCurr2') {
-      if (this.state.loans.user > 0) {
-        event.target.value = this.state.loans.user;
-      }
-    }
+    // if (event.target.name === 'loanTotalCurr' || event.target.name === 'loanTotalCurr2') {
+    // if (event.target.name === 'loanTotalCurr') {
+    //   if (this.state.loans.user > 0) {
+    //     event.target.value = this.state.loans.user;
+    //   }
+    // }
   }
 
   onBlur = (event) => {
@@ -669,9 +672,10 @@ class DndLoanDebt extends Component {
     this.setState({
       inputs: _inputs,
     });
-    if (event.target.name === 'loanTotalCurr' || event.target.name === 'loanTotalCurr2') {
-      event.target.value = '';
-    }
+    // if (event.target.name === 'loanTotalCurr' || event.target.name === 'loanTotalCurr2') {
+    // if (event.target.name === 'loanTotalCurr') {
+    //   event.target.value = '';
+    // }
   }
 
   render() {
@@ -724,7 +728,7 @@ class DndLoanDebt extends Component {
           onClick={this.onClick}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
-          userLoan={this.state.loans.user}
+          userLoan={this.state.user.loanPrincipalCurr}
           strings={this.state.strings}
           inputs={this.state.inputs}
           {...this.state.validation}
