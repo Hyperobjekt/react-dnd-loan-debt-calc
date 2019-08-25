@@ -52,7 +52,7 @@ const TimelineTable = ({getCurrencyFormat, strings, ...props}) => {
 
 const TimelineLegend = ({strings}) => {
   return (
-    <table className="timeline-legend">
+    <table tabindex="0" className="timeline-legend">
       <tbody>
         <tr>
           <td className="th">{strings.fields.principal}</td>
@@ -194,26 +194,26 @@ class DndLoanDebt extends Component {
       timer: null,
       strings: {
         spiral: {
-          title: "PAYOFF CALCULATOR",
-          prompt: "ENTER YOUR LOAN BALANCE BELOW",
+          title: "DISPARITIES IN STUDENT DEBT BY ANCESTRY .",
+          prompt: "ENTER THE TOTAL PRINCIPAL AMOUNT YOU BORROWED BELOW:",
           legend: {
-            avgOverall: "AVERAGE OVERALL LOAN DEBT",
-            avgBlack: "AVERAGE FOR BLACK BACHELOR'S DEGREE COMPLETERS",
-            avgWhite: "AVERAGE FOR WHITE BACHELOR'S DEGREE COMPLETERS",
-            avgHispanic: "AVERAGE FOR HISPANIC BACHELOR'S DEGREE COMPLETERS",
-            avgAsian: "AVERAGE FOR ASIAN BACHELOR'S DEGREE COMPLETERS",
-            user: "YOUR DEBT AMOUNT",
+            avgOverall: "ALL",
+            avgBlack: "BLACKS",
+            avgWhite: "WHITES",
+            avgHispanic: "HISPANICS",
+            avgAsian: "ASIANS",
+            user: "YOURS",
           }
         },
         timeline: {
-          title: "REPAYMENT SCHEDULE",
-          prompt: 'ENTER YOUR ORIGINAL AND<br>NEW LOAN DETAILS FOR COMPARISON',
+          title: "YOUR STUDENT LOAN REPAYMENT CALCULATOR",
+          prompt: 'ENTER YOUR CURRENT LOAN BALANCE AND TRY OUT<br>NEW PAYMENT TERMS TO SEE HOW MUCH YOU CAN SAVE',
         },
         amount: {
 
         },
         fields: {
-          loanBalance: "LOAN BALANCE",
+          loanBalance: "YOUR PRINCIPAL AMOUNT",
           origInt: "CURRENT INTEREST RATE",
           origPmt: "CURRENT MONTHLY PAYMENT",
           newInt: "NEW INTEREST RATE",
@@ -706,7 +706,7 @@ class DndLoanDebt extends Component {
               colors={this.state.colors}
             />
           </div>
-          <div className="offset-1 col-10 offset-sm-1 col-sm-10 offset-md-0 col-md-5">
+          <div id="spiralcontainer" className="offset-1 col-10 offset-sm-1 col-sm-10 offset-md-0 col-md-5">
            <Spiral
              {...this.state}
            />
@@ -734,13 +734,13 @@ class DndLoanDebt extends Component {
           {...this.state.validation}
         />
         <div className="row timeline-table-legend">
-          <div className="col offset-1 col-10 col-md-6">
+          {/*<div className="col offset-1 col-10 col-md-6">
             <TimelineTable
               getCurrencyFormat={this.getCurrencyFormat}
               strings={this.state.strings}
               {...this.state.user} />
-          </div>
-          <div className="col offset-md-1 col-md-4 col-10 offset-1">
+          </div> */}
+          <div className="col offset-md-1 col-md-10 col-10 offset-1">
             <TimelineLegend
               strings={this.state.strings}
               colors={this.state.colors}

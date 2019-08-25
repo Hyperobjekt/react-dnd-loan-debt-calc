@@ -74,7 +74,7 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
         extraCssText: 'border-radius:0;'
     },
     legend: {
-        data: ['CURRENT PAYOFF TIMELINE', 'NEW PAYOFF TIMELINE']
+        data: ['CURRENT PAYOFF DATE', 'NEW PAYOFF DATE']
     },
     grid: {
       left: 0,
@@ -89,7 +89,7 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
     },
     yAxis: {
       type: 'category',
-      data: ['NEW PAYOFF TIMELINE', 'CURRENT PAYOFF TIMELINE'],
+      data: ['NEW PAYOFF DATE', 'CURRENT PAYOFF DATE'],
       show: true,
       axisLine: {
         show: false
@@ -102,7 +102,7 @@ const PayoffSchedule = ({ offsets, paths, user, colors }) => {
         fontFamily: 'Vasarely',
         fontSize: 18,
         verticalAlign: 'middle',
-        padding: [0, 0, 5, 0],
+        padding: [0, 0, 5, 48],
       }
     },
     barWidth: 10,
