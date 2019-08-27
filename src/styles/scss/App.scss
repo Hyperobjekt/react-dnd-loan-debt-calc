@@ -18,7 +18,7 @@ html, body {
    src: url("../../assets/fonts/Vasarely/Vasarely.otf");
    src: url("../../assets/fonts/Vasarely/Vasarely.otf") format("otf"), url("../../assets/fonts/Vasarely/Vasarely.woff") format("woff");
 }
-
+$spacer: 1rem;
 $stack-b52: "B52-ULC W05 ULC", Helvetica, Arial, sans-serif;
 $stack-vasarely: "Vasarely", Helvetica, Arial, sans-serif;
 $overall-path: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAByklEQVQ4jT2TQY7dMAxDH2nP9P7H6qbXKdpEZBf2bxAEDmBL9COl379+IiFRaGixtL9YC0QCRQawScggnV/TALTYrNWZTkBMaGlAd/e8t1DSGebdyLezJJkf36A2tBLIbfj7kGDr6xvTgabRZn9BuU+1dlta2s7IllyDJPs22KKrmY1EKqulz8PeQkXYuiwiCfkKJnghC7b2JldkbVKWJV05LQiKhGDSVodU4z5PZxAIbKTOS4t8vgVkvAAkrcUMKdImASr0uTdSE51u9KrIXOxrUaB9H0OxaNsCCCQsEAXUTN+378feHniLZANk6P8D0dqsdU0WsvG6pe9pWrD3f7HHHig2Ni05u8DWZ4Ek6bi4afT9g7QtM6wFkNzYrNXmcMGm0HZOSNnIfV+Q7J6GDRUSmcYn0m11JNssQzrjj+Z05vS8i4t9SO5gFKzj13Hu3PlmG6q9bx4EWh//ctOWdh7WxtJavgCPz21LUzh5VBMa8B3Pft6k72PtL2RK5z1gzgCQMKND5CQ10wTU9ixMq6PTvicP7eRwwoZQdCqeb0LrHpI3FeVUPYYfvhKoz58ecmvhdfy3ToYQdjOdgfZ0+ISn837MR2dUbeAfF4V7meJR864AAAAASUVORK5CYII=');
@@ -165,13 +165,15 @@ $input-gray: #D2D2D2;
         &.amt {
           text-align: right;
           padding-left: 10px;
+          vertical-align: middle;
         }
       }
     }
   }
 
   .timeline-table-legend,
-  .timeline-legend {
+  .timeline-legend,
+  .timeline-amount-owed {
     tr {
       td {
         &.th {
@@ -182,6 +184,12 @@ $input-gray: #D2D2D2;
           padding-left: 1rem;
         }
       }
+    }
+  }
+
+  .timeline-amount-owed {
+    .amt {
+      min-width: 100px;
     }
   }
 

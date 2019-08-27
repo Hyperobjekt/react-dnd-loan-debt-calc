@@ -52,7 +52,7 @@ const TimelineTable = ({getCurrencyFormat, strings, ...props}) => {
 
 const TimelineLegend = ({strings}) => {
   return (
-    <table tabindex="0" className="timeline-legend">
+    <table tabIndex="0" className="timeline-legend">
       <tbody>
         <tr>
           <td className="th">{strings.fields.principal}</td>
@@ -63,6 +63,24 @@ const TimelineLegend = ({strings}) => {
           <td className="th">{strings.fields.interest}</td>
           <td><i className="circle interest-old"></i></td>
           <td><i className="circle interest-new"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+
+const AmountSaved = ({getCurrencyFormat, user, strings}) => {
+  let label = strings.fields.amountSaved;
+  if (user.totalPaidDiff && user.totalPaidDiff < 0) {
+    label = strings.fields.amountOwed;
+  }
+  const amount = user.totalPaidDiff ? getCurrencyFormat(user.totalPaidDiff , true) : null;
+  return (
+    <table tabIndex="0" className="timeline-amount-owed float-md-right mt-5 mt-md-0">
+      <tbody>
+        <tr>
+          <td className="th">{label}</td>
+          <td className="amt">{amount}</td>
         </tr>
       </tbody>
     </table>
@@ -127,6 +145,7 @@ class DndLoanDebt extends Component {
         payoffDateNew: null,
         totalPaidCurr: null,
         totalPaidNew: null,
+        totalPaidDiff: null,
         totalIntNew: null,
         totalIntCurr: null,
         nperCurr: null,
@@ -222,7 +241,9 @@ class DndLoanDebt extends Component {
           payoffDateNew: "NEW DATE OF FINAL PAYMENT",
           totalIntNew: "NEW AMOUNT OF INTEREST",
           principal: "PRINCIPAL",
-          interest: "INTEREST"
+          interest: "INTEREST",
+          amountSaved: "CASH SAVINGS:",
+          amountOwed: "ADDITIONAL OWED:"
         }
       },
       colors: {
@@ -458,6 +479,11 @@ class DndLoanDebt extends Component {
       _user.totalIntNew = null;
       _user.payoffDateNew = null;
     }
+
+    if (!!_user.totalPaidNew && !!_user.totalPaidCurr) {
+      _user.totalPaidDiff = _user.totalPaidCurr - _user.totalPaidNew;
+    }
+
     return _user;
   }
 
@@ -734,20 +760,6 @@ class DndLoanDebt extends Component {
           inputs={this.state.inputs}
           {...this.state.validation}
         />
-        <div className="row timeline-table-legend">
-          {/*<div className="col offset-1 col-10 col-md-6">
-            <TimelineTable
-              getCurrencyFormat={this.getCurrencyFormat}
-              strings={this.state.strings}
-              {...this.state.user} />
-          </div> */}
-          <div className="col offset-md-1 col-md-10 col-10 offset-1">
-            <TimelineLegend
-              strings={this.state.strings}
-              colors={this.state.colors}
-            />
-          </div>
-        </div>
         <div className="row payoff-amount payoff">
           <div className="offset-1 col-10 offset-md-1 col-md-9">
             <PayoffSchedule
@@ -766,6 +778,26 @@ class DndLoanDebt extends Component {
               paths={this.state.paths}
               user={this.state.user}
               colors={this.state.colors} />
+          </div>
+        </div>
+        <div className="row timeline-table-legend">
+          {/*<div className="col offset-1 col-10 col-md-6">
+            <TimelineTable
+              getCurrencyFormat={this.getCurrencyFormat}
+              strings={this.state.strings}
+              {...this.state.user} />
+          </div> */}
+          <div className="offset-2 col-8 col-md-4 offset-md-1">
+            <TimelineLegend
+              strings={this.state.strings}
+            />
+          </div>
+          <div className="offset-2 col-8 col-md-4 offset-md-1">
+            <AmountSaved
+              getCurrencyFormat={this.getCurrencyFormat}
+              user={this.state.user}
+              strings={this.state.strings}
+            />
           </div>
         </div>
       </div>
