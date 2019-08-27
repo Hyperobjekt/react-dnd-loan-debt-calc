@@ -206,14 +206,15 @@ class DndLoanDebt extends Component {
           }
         },
         timeline: {
-          title: "YOUR STUDENT LOAN REPAYMENT CALCULATOR",
+          title: "YOUR STUDENT LOAN REPAYMENT CALCULATOR .",
           prompt: 'ENTER YOUR CURRENT LOAN BALANCE AND TRY OUT<br>NEW PAYMENT TERMS TO SEE HOW MUCH YOU CAN SAVE',
         },
         amount: {
 
         },
         fields: {
-          loanBalance: "YOUR PRINCIPAL AMOUNT",
+          principalAmt: "YOUR PRINCIPAL AMOUNT",
+          loanBalance: "YOUR CURRENT BALANCE",
           origInt: "CURRENT INTEREST RATE",
           origPmt: "CURRENT MONTHLY PAYMENT",
           newInt: "NEW INTEREST RATE",

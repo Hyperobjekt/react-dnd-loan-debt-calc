@@ -17,7 +17,7 @@ const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, o
   const loanTotalCurrPlaceholder =
     inputs.loanTotalCurr.focused ?
     '' :
-    strings.fields.loanBalance;
+    strings.fields.principalAmt;
 
   const clearInput = (e) => {
     // console.log('clear input');
