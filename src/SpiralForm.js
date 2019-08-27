@@ -12,7 +12,7 @@ const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, o
     }
   );
 
-  const currDisplay = userLoan ? getCurrencyFormat(userLoan, false) : strings.fields.loanBalance;
+  const currDisplay = userLoan ? getCurrencyFormat(userLoan, false) : strings.fields.principalAmt;
 
   const loanTotalCurrPlaceholder =
     inputs.loanTotalCurr.focused ?
@@ -33,7 +33,7 @@ const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, o
   return (
     <form noValidate id="form1" onSubmit={(e) => onSubmit(e)}>
       <div className={amtGroupClass}>
-        <label>{strings.fields.loanBalance}</label>
+        <label>{strings.fields.principalAmt}</label>
         <span className="symbol-wrapper currency">
           <input
             type="number"
@@ -42,7 +42,7 @@ const SpiralForm = ({ onSubmit, getCurrencyFormat, handleInputChange, onClick, o
             autoComplete="off"
             className="curr"
             maxLength="7"
-            aria-label={'Enter ' + strings.fields.loanBalance}
+            aria-label={'Enter ' + strings.fields.principalAmt}
             onClick={(e) => onClick(e)}
             onFocus={(e) => onFocus(e)}
             onBlur={(e) => onBlur(e)}
