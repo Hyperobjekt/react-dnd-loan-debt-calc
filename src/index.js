@@ -74,7 +74,7 @@ const AmountSaved = ({getCurrencyFormat, user, strings}) => {
   if (user.totalPaidDiff && user.totalPaidDiff < 0) {
     label = strings.fields.amountOwed;
   }
-  const amount = user.totalPaidDiff ? getCurrencyFormat(user.totalPaidDiff , true) : null;
+  const amount = user.totalPaidDiff ? getCurrencyFormat(Math.abs(user.totalPaidDiff) , true) : null;
   return (
     <table tabIndex="0" className="timeline-amount-owed float-md-right mt-5 mt-md-0">
       <tbody>
