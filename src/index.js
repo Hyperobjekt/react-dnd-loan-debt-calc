@@ -55,13 +55,13 @@ const TimelineLegend = ({strings}) => {
     <table tabIndex="0" className="timeline-legend">
       <tbody>
         <tr>
-          <td className="th">{strings.fields.principal}</td>
+          <td rowspan="2" className="th">{strings.fields.principal}</td>
           <td><i className="circle principal-old"></i></td>
-          <td><i className="circle principal-new"></i></td>
+          <td rowspan="2">{strings.fields.interest}</td>
+          <td><i className="circle interest-old"></i></td>
         </tr>
         <tr>
-          <td className="th">{strings.fields.interest}</td>
-          <td><i className="circle interest-old"></i></td>
+          <td><i className="circle principal-new"></i></td>
           <td><i className="circle interest-new"></i></td>
         </tr>
       </tbody>
@@ -787,12 +787,12 @@ class DndLoanDebt extends Component {
               strings={this.state.strings}
               {...this.state.user} />
           </div> */}
-          <div className="offset-2 col-8 col-md-4 offset-md-1">
+          <div className="offset-2 col-8 col-md-4">
             <TimelineLegend
               strings={this.state.strings}
             />
           </div>
-          <div className="offset-2 col-8 col-md-4 offset-md-1">
+          <div className="offset-2 col-8 col-md-4 offset-md-0">
             <AmountSaved
               getCurrencyFormat={this.getCurrencyFormat}
               user={this.state.user}
