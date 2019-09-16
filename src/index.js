@@ -55,9 +55,9 @@ const TimelineLegend = ({strings}) => {
     <table tabIndex="0" className="timeline-legend">
       <tbody>
         <tr>
-          <td rowspan="2" className="th">{strings.fields.principal}</td>
+          <td rowSpan="2" className="th">{strings.fields.principal}</td>
           <td><i className="circle principal-old"></i></td>
-          <td rowspan="2">{strings.fields.interest}</td>
+          <td rowSpan="2">{strings.fields.interest}</td>
           <td><i className="circle interest-old"></i></td>
         </tr>
         <tr>
@@ -395,20 +395,13 @@ class DndLoanDebt extends Component {
   onUpdateLoanStats = (loans, user) => {
     // console.log('onUpdateLoanStats');
     // Gather all the data.
-    // const _loanAmtCurr = loans.user;
-    const _loanRateCurr =
-      (user.loanRateCurr > 1) ?
-      (user.loanRateCurr / 100) :
-      user.loanRateCurr;
+    const _loanRateCurr = user.loanRateCurr
     const _loanPmtCurr = user.loanPmtCurr;
-    const _loanRateNew =
-      (user.loanRateNew > 1) ?
-      (user.loanRateNew / 100) :
-      user.loanRateNew;
+    const _loanRateNew = user.loanRateNew
     const _loanPmtNew = user.loanPmtNew;
     const _user = user;
     const _loanAmtCurr = _user.loanPrincipalCurr;
-    // let _loanPrincipal = null;
+
     let _currNPER = null;
     let _newNPER = null;
     let _currCUMIPMT = null;
@@ -419,17 +412,16 @@ class DndLoanDebt extends Component {
     // If loan amount, interest rate, and payments
     if ((_loanAmtCurr > 0) && (_loanRateCurr > 0) && (_loanPmtCurr > 0)) {
       // Set current principal value for bar
-      // _user.loanPrincipalCurr = _loanAmtCurr;
 
       // Calculate number of payment periods
       // Arguments: (rate/12, payment, presentvalue)
-      _currNPER = -Math.round(financial.NPER((_loanRateCurr/12), _loanPmtCurr, _loanAmtCurr, 0, 0));
+      _currNPER = Math.round(financial.NPER(((_loanRateCurr/100)/12), -_loanPmtCurr, _loanAmtCurr, 0, 0));
       _user.nperCurr = _currNPER;
 
       // Calculate cumipmt
       // Arguments: (rate,nper,presentvalue,start,end,type)
       if (!!_currNPER) {
-        _currCUMIPMT = -Math.round(financial.CUMIPMT((_loanRateCurr / 12), _currNPER, _loanAmtCurr, 1, _currNPER, 0));
+        _currCUMIPMT = -Math.round(financial.CUMIPMT(((_loanRateCurr/100) / 12), _currNPER, _loanAmtCurr, 1, _currNPER, 0));
         _user.totalPaidCurr = _loanAmtCurr + _currCUMIPMT;
       }
 
@@ -456,10 +448,10 @@ class DndLoanDebt extends Component {
       // Set new principal value for bar
       _user.loanPrincipalNew = _loanAmtCurr;
 
-      _newNPER = -Math.round(financial.NPER((_loanRateNew/12), _loanPmtNew, _loanAmtCurr, 0, 0));
+      _newNPER = Math.round(financial.NPER(((_loanRateNew/100)/12), -_loanPmtNew, _loanAmtCurr, 0, 0));
       _user.nperNew = _newNPER;
       if (!!_newNPER) {
-        _newCUMIPMT = -Math.round(financial.CUMIPMT((_loanRateNew / 12), _newNPER, _loanAmtCurr, 1, _newNPER, 0));
+        _newCUMIPMT = -Math.round(financial.CUMIPMT(((_loanRateNew/100) / 12), _newNPER, _loanAmtCurr, 1, _newNPER, 0));
         // console.log('_newCUMIPMT: ' +  _newCUMIPMT);
         _user.totalPaidNew = _loanAmtCurr + _newCUMIPMT;
         _user.totalIntNew = _newCUMIPMT;
